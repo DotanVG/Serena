@@ -1,0 +1,4 @@
+{
+"mongoURI":"mongodb+srv://levinitai94:AOJX6DJTAnLogtcc@serena.eiebglf.mongodb.net/serenaDB?retryWrites=true&w=majority&appName=Serena",
+"jwtSecret":"AOJX6DJTAnLogtcc"
+}

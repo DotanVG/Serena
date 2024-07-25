@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Serena</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_home_hub">HomeHubActivity</string>
+    <string name="title_activity_sign_in_sign_up">SignInSignUpActivity</string>
+    <string name="default_web_client_id">87410093266-c4n1qihbsj5juh4suf8glehqt5mcqnb6.apps.googleusercontent.com</string>
+    <string name="title_activity_personal_details">PersonalDetailsActivity</string>
+    <string name="title_activity_swipe_preferences">SwipePreferencesActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="icon_placeholder">Icon</string>
+        <string name="data_placeholder">Data</string>
+
+
+</resources>

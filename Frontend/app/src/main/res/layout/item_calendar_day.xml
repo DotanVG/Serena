@@ -1,0 +1,9 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/calendar_day_button"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:gravity="center"
+    android:textColor="@android:color/black"
+    android:textSize="16sp"
+    android:layout_margin="4dp"
+    android:background="@drawable/calendar_day_background"/>

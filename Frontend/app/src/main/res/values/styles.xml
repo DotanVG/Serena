@@ -1,0 +1,25 @@
+<resources>
+
+    <!-- Base application theme -->
+    <style name="Theme.Serena" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+    </style>
+
+     Splash Screen Theme
+  <style name="Theme.AppCompat.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_screen_background</item>
+    </style>
+
+        <style name="RoundButton" parent="Widget.AppCompat.Button">
+            <item name="android:layout_width">wrap_content</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:background">@drawable/rounded_button_selected</item>
+            <item name="android:textColor">@android:color/white</item>
+            <item name="android:padding">10dp</item>
+        </style>
+
+
+</resources>
