@@ -1,0 +1,121 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user');
+
+router.post('/saveHealthData', async (req, res) => {
+    try {
+        const { userId, month, day, data } = req.body;
+
+        console.log("Received Data: ", req.body);
+
+        // Convert binary string to integer
+        const dataInt = parseInt(data, 2);
+
+        // Find the user
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Prepare the day's data
+        const dayData = { dataInt: dataInt };
+
+        // Initialize the month map if it doesn't exist
+        if (!user.months) {
+            user.months = new Map();
+        }
+
+        // Initialize the days map if it doesn't exist
+        if (!user.months.has(month)) {
+            user.months.set(month, { days: new Map() });
+        }
+
+        const monthData = user.months.get(month);
+
+        if (!monthData.days) {
+            monthData.days = new Map();
+        }
+
+        monthData.days.set(day.toString(), dayData);
+
+        // Update the month data
+        user.months.set(month, monthData);
+
+        // Save the user
+        await user.save();
+
+        res.status(200).json({ message: 'Health data saved successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+
+// router.get('/getHealthData/:userId/:monthYear', async (req, res) => {
+//     try {
+//         const { userId, monthYear } = req.params;
+
+//         // Find the user
+//         const user = await User.findById(userId);
+//         if (!user) {
+//             return res.status(404).json({ message: 'User not found' });
+//         }
+
+//         // Get the month's data
+//         const monthData = user.months.get(monthYear) || {};
+
+//         res.status(200).json(monthData);
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ message: 'Server error' });
+//     }
+// });
+
+
+router.get('/getHealthData/:userId/:monthYear', async (req, res) => {
+    try {
+        const { userId, monthYear } = req.params;
+        
+        console.log(`Fetching health data for user: ${userId}, month: ${monthYear}`);
+
+        // Find the user
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Get the month's data
+        const monthData = user.months.get(monthYear) || { days: new Map() };
+
+        // Log the raw month data before conversion
+    
+
+        // Convert the Map to an object with binary strings
+        const monthDataObj = {};
+        if (monthData.days) {
+            for (const [key, value] of monthData.days.entries()) {
+                monthDataObj[key] = {
+                    data: value.dataInt.toString(2).padStart(32, '0')
+                };
+            }
+        }
+
+        // Log the final converted month data
+      
+
+        // Send the response
+        res.status(200).json(monthDataObj);
+    } catch (error) {
+        console.error("Error occurred:", error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+module.exports = router;
+
+
+
+
+

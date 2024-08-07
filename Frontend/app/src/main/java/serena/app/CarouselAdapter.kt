@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import serena.app.R
 
 data class CarouselItem(val imageResId: Int, val text: String)
 
@@ -23,9 +22,7 @@ class CarouselAdapter(private val items: List<CarouselItem>) : RecyclerView.Adap
         holder.dataText.text = item.text
     }
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+    override fun getItemCount(): Int = items.size
 
     class CarouselViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val iconImage: ImageView = itemView.findViewById(R.id.icon_image)

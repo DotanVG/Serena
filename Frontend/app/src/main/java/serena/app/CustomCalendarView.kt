@@ -2,14 +2,18 @@ package serena.app
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import serena.app.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,6 +26,7 @@ class CustomCalendarView @JvmOverloads constructor(
     private lateinit var recyclerView: RecyclerView
     private lateinit var buttonPreviousMonth: ImageButton
     private lateinit var buttonNextMonth: ImageButton
+    private lateinit var apiService: ApiService
 
     init {
         orientation = VERTICAL
@@ -29,6 +34,8 @@ class CustomCalendarView @JvmOverloads constructor(
         setupUI()
         setupCalendar()
         setupNavigation()
+        setupApiService()
+        fetchMonthlyData()
     }
 
     private fun setupUI() {
@@ -39,10 +46,12 @@ class CustomCalendarView @JvmOverloads constructor(
         buttonNextMonth = findViewById(R.id.buttonNextMonth)
     }
 
-    private fun setupCalendar() {
+    private fun setupCalendar(daysMap: Map<String, Map<String, String>> = emptyMap()) {
         updateMonthLabel()
         val daysInMonth = getDaysInMonth()
-        recyclerView.adapter = CalendarAdapter(daysInMonth) { day ->
+        val fragmentManager = (context as FragmentActivity).supportFragmentManager
+        val monthYear = getCurrentMonthYear()
+        recyclerView.adapter = CalendarAdapter(daysInMonth, fragmentManager, monthYear, daysMap) { day ->
             Toast.makeText(context, "Clicked on day: $day", Toast.LENGTH_SHORT).show()
         }
     }
@@ -50,12 +59,12 @@ class CustomCalendarView @JvmOverloads constructor(
     private fun setupNavigation() {
         buttonPreviousMonth.setOnClickListener {
             calendar.add(Calendar.MONTH, -1)
-            setupCalendar()
+            fetchMonthlyData()
         }
 
         buttonNextMonth.setOnClickListener {
             calendar.add(Calendar.MONTH, 1)
-            setupCalendar()
+            fetchMonthlyData()
         }
     }
 
@@ -71,5 +80,39 @@ class CustomCalendarView @JvmOverloads constructor(
             daysInMonth.add(i.toString())
         }
         return daysInMonth
+    }
+
+    private fun getCurrentMonthYear(): String {
+        val sdf = SimpleDateFormat("MM-yyyy", Locale.getDefault())
+        return sdf.format(calendar.time)
+    }
+
+    private fun setupApiService() {
+        apiService = ApiClient.getClient(context).create(ApiService::class.java)
+    }
+
+    fun fetchMonthlyData() {
+        val sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getString("userId", null) ?: return
+
+        val currentMonthYear = getCurrentMonthYear()
+
+        apiService.getHealthData(userId, currentMonthYear).enqueue(object : Callback<Map<String, Map<String, String>>> {
+            override fun onResponse(call: Call<Map<String, Map<String, String>>>, response: Response<Map<String, Map<String, String>>>) {
+                if (response.isSuccessful) {
+                    val daysMap = response.body() ?: emptyMap()
+                    Log.d("CustomCalendarView", "Days Map: $daysMap")
+                    setupCalendar(daysMap)
+                } else {
+                    Log.e("API", "Failed to fetch data: ${response.errorBody()?.string()}")
+                    setupCalendar(emptyMap())
+                }
+            }
+
+            override fun onFailure(call: Call<Map<String, Map<String, String>>>, t: Throwable) {
+                Log.e("API", "API call failed", t)
+                setupCalendar(emptyMap())
+            }
+        })
     }
 }

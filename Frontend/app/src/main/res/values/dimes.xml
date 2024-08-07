@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="pageMargin">40dp</dimen>
+    <dimen name="offset">60dp</dimen>
+</resources>

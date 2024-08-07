@@ -13,7 +13,18 @@ data class UserResponse(val token: String)
 data class SymptomsRequest(val userId: String, val symptoms: List<String>, val onboarding: Int)
 data class PreferencesRequest(val userId: String, val preferences: List<String>, val onboarding: Int)
 data class OnboardingStatusResponse(val onboarding: Int)
+data class HealthDataRequest(
+    val userId: String,
+    val month: String,
+    val day: Int,
+    val data: String, // Binary string
+    val notes: String? = null
+)
 
+data class HealthDataResponse(
+    val success: Boolean,
+    val message: String
+)
 interface ApiService {
     @POST("api/users/login")
     fun login(@Body user: User): Call<LoginResponse>
@@ -32,4 +43,9 @@ interface ApiService {
 
     @POST("api/onboarding/savePreferences")
     fun savePreferences(@Body preferencesRequest: PreferencesRequest): Call<Void>
+
+    @POST("api/daily_form/saveHealthData")
+    fun saveHealthData(@Body healthDataRequest: HealthDataRequest): Call<HealthDataResponse>
+    @GET("api/daily_form/getHealthData/{userId}/{monthYear}")
+    fun getHealthData(@Path("userId") userId: String, @Path("monthYear") monthYear: String): Call<Map<String, Map<String, String>>>
 }

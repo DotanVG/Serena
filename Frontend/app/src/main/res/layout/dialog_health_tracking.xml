@@ -1,0 +1,882 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="#140D3F">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#140D3F">
+
+        <!-- Upper Part: Spotting and Bleeding CheckBoxes -->
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today, CD 8"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Spotting or Bleeding"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <CheckBox
+                android:id="@+id/checkbox_spotting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spotting"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+
+            <CheckBox
+                android:id="@+id/checkbox_bleeding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bleeding"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:background="@drawable/checkbox_selector" />
+        </LinearLayout>
+
+        <!-- Pains and Symptoms Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pains and Symptoms"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <CheckBox
+                android:id="@+id/checkbox_constipation"
+                android:text="Constipation"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+            <CheckBox
+                android:id="@+id/checkbox_diarrhea"
+                android:text="Diarrhea"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+            <CheckBox
+                android:id="@+id/checkbox_bloating"
+                android:text="Bloating"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+            <CheckBox
+                android:id="@+id/checkbox_cravings"
+                android:text="Cravings"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+            <CheckBox
+                android:id="@+id/checkbox_cramps"
+                android:text="Cramps"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+            <CheckBox
+                android:id="@+id/checkbox_nausea"
+                android:text="Nausea"
+                android:textColor="#FFFFFF"
+                android:button="@drawable/checkbox_selector"
+                android:padding="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/checkbox_selector" />
+        </GridLayout>
+
+        <!-- Pain Scale -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pain Scale"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="#FFFFFF" />
+
+        <SeekBar
+            android:id="@+id/seekbar_pain_scale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10"
+            android:progress="5"
+            android:layout_marginTop="8dp"
+            android:progressTint="#FFFFFF"
+            android:thumbTint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mood"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white" />
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:rowCount="5"
+            android:orientation="vertical"
+            android:padding="0dp"
+            android:layout_marginTop="8dp">
+
+            <!-- Example Mood Item -->
+            <LinearLayout
+                android:id="@+id/layout_happy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:padding="2dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_happy"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_happy" />
+
+                <ImageView
+                    android:id="@+id/icon_happy"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_happy"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_happy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Happy"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_confident"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_confident"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_confident" />
+
+                <ImageView
+                    android:id="@+id/icon_confident"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_confident"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_confident"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confident"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_calm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_calm"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_calm" />
+
+                <ImageView
+                    android:id="@+id/icon_calm"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_calm"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_calm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Calm"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_energetic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_energetic"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_energetic" />
+
+                <ImageView
+                    android:id="@+id/icon_energetic"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_energetic"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_energetic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Energetic"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_excited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_excited"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_excited" />
+
+                <ImageView
+                    android:id="@+id/icon_excited"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_excited"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_excited"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Excited"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_pms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:padding="2dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_pms"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_pms" />
+
+                <ImageView
+                    android:id="@+id/icon_pms"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_pms"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_pms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PMS"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_mood_swings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_mood_swings"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_mood_swings" />
+
+                <ImageView
+                    android:id="@+id/icon_mood_swings"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_mood_swings"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_mood_swings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mood Swings"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_irritable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_irritable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_irritable" />
+
+                <ImageView
+                    android:id="@+id/icon_irritable"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_irritable"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_irritable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Irritable"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_anxious"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_anxious"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_anxious" />
+
+                <ImageView
+                    android:id="@+id/icon_anxious"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_anxious"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_anxious"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anxious"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_stressed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_stressed"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_stressed" />
+
+                <ImageView
+                    android:id="@+id/icon_stressed"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_stressed"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_stressed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stressed"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_tired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:padding="2dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_tired"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_tired" />
+
+                <ImageView
+                    android:id="@+id/icon_tired"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_tired"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_tired"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tired"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_sensitive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_sensitive"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_sensitive" />
+
+                <ImageView
+                    android:id="@+id/icon_sensitive"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_sensitive"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_sensitive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sensitive"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_numb"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_numb" />
+
+                <ImageView
+                    android:id="@+id/icon_numb"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_numb"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_numb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Numb"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_sad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_sad"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_sad" />
+
+                <ImageView
+                    android:id="@+id/icon_sad"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_sad"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_sad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sad"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_angry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_angry"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_angry" />
+
+                <ImageView
+                    android:id="@+id/icon_angry"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_angry"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_angry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Angry"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_unfocused"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_unfocused"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_unfocused" />
+
+                <ImageView
+                    android:id="@+id/icon_unfocused"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_unfocused"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_unfocused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Unfocused"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_self_critical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_self_critical"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_self_critical" />
+
+                <ImageView
+                    android:id="@+id/icon_self_critical"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_self_critical"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_self_critical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Self Conscious"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_guilty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_guilty"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_guilty" />
+
+                <ImageView
+                    android:id="@+id/icon_guilty"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_guilty"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_guilty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guilty"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_obsessive_thoughts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="2dp"
+                android:padding="2dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_obsessive_thoughts"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_obsessive_thoughts" />
+
+                <ImageView
+                    android:id="@+id/icon_obsessive_thoughts"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_obsessive_thoughts"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_obsessive_thoughts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Obsessive"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_confused"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_margin="1dp"
+                android:padding="1dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkbox_confused"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:button="@mipmap/ic_confused" />
+
+                <ImageView
+                    android:id="@+id/icon_confused"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@mipmap/ic_confused"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/text_confused"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Confused"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center" />
+            </LinearLayout>
+
+        </GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notes"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/etNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Add notes here"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white" />
+    </LinearLayout>
+</ScrollView>

@@ -20,6 +20,9 @@
             <item name="android:textColor">@android:color/white</item>
             <item name="android:padding">10dp</item>
         </style>
-
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/rounded_dialog_background</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
 
 </resources>

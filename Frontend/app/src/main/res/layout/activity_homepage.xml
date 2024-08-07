@@ -8,17 +8,25 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar_layout"/>
+        layout="@layout/toolbar_layout" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/carousel_viewpager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carousel_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"/>
 
     <serena.app.CustomCalendarView
-        android:layout_width="match_parent"
+        android:id="@+id/custom_calendar_view"
+    android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
 </LinearLayout>
